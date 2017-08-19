@@ -1,0 +1,14 @@
+Homepage:
+Headlines with links to original news articles
+Pictures
+Summaries
+
+
+Single story page:
+Clicking through -> Full story
+
+Objects:
+NewsList: addArticle, getArticle
+SingleArticleView
+HomePage
+NewsController
