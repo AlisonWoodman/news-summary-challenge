@@ -9,6 +9,19 @@ Clicking through -> Full story
 
 Objects:
 NewsList: addArticle, getArticle
+Article: Url
 SingleArticleView
 HomePage
 NewsController
+
+
+e.g JSON response to API call: http://content.guardianapis.com/world?show-editors-picks=true&show-fields=body
+Array element result from json.response.editorsPicks
+
+{"id":"world/2017/aug/19/las-ramblas-cries-barcelona-recovers-defiance-attacks",
+"type":"article","sectionId":"world","sectionName":"World news",
+"webPublicationDate":"2017-08-19T16:26:39Z",
+"webTitle":"‘Las Ramblas cries but it is alive’: Barcelona recovers historic defiance",
+"webUrl":"https://www.theguardian.com/world/2017/aug/19/las-ramblas-cries-barcelona-recovers-defiance-attacks",
+"apiUrl":"https://content.guardianapis.com/world/2017/aug/19/las-ramblas-cries-barcelona-recovers-defiance-attacks",
+"isHosted":false}
