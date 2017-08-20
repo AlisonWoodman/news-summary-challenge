@@ -1,7 +1,7 @@
 'use strict';
 
 (function(exports){
-  function HomepageView(NewsListModel) {
+  function HomepageView(NewsListModel, ApiCallsModel) {
     this._newsListModel = new NewsListModel(ApiCallsModel)
   }
 
@@ -13,8 +13,7 @@ HomepageView.prototype.displayHeadlines = function(articles) {
       htmlToReturn += ("<li><a href=\"#articles/" + articleUrl + "\">" + articleTitle + "</a></li>")
   });
   htmlToReturn += "</ul>"
-  console.log(htmlToReturn)
-  document.getElementById("app").innerHTML = htmlToReturn
+  return htmlToReturn
 };
 
   exports.HomepageView = HomepageView

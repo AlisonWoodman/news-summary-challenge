@@ -28,6 +28,5 @@ Array element result from json.response.editorsPicks
 
 How to make homepage display news headlines:
 
-homepageView = new HomepageView(NewsListModel)
-homepageView._newsListModel.makeHeadlinesApiCall();
-homepageView.displayHeadlines(homepageView._newsListModel._articles);
+newscontroller = new NewsController(HomepageView, NewsListModel, ApiCallsModel)
+newscontroller.displayArticleList(exampleHeadlines)
