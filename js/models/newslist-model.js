@@ -1,3 +1,5 @@
+'use strict';
+
 (function(exports){
   function NewsListModel(ApiCallsModel) {
     this._articles = []

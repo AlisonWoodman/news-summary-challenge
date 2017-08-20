@@ -1,3 +1,5 @@
+'use strict';
+
 (function(exports){
   function ApiCallsModel() {
     this._articleArray = []
@@ -25,8 +27,8 @@
       var json = JSON.parse(xhr.responseText);
       document.getElementById("app").innerHTML = xhr.responseText
         json.response.editorsPicks.forEach(function(article){
-        articleTitle = article.webTitle;
-        articleUrl = article.id
+        var articleTitle = article.webTitle;
+        var articleUrl = article.id
         self._articleArray.push({'articleTitle': articleTitle, 'articleUrl' : articleUrl})
       });
     });

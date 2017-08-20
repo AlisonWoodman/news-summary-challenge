@@ -25,3 +25,9 @@ Array element result from json.response.editorsPicks
 "webUrl":"https://www.theguardian.com/world/2017/aug/19/las-ramblas-cries-barcelona-recovers-defiance-attacks",
 "apiUrl":"https://content.guardianapis.com/world/2017/aug/19/las-ramblas-cries-barcelona-recovers-defiance-attacks",
 "isHosted":false}
+
+How to make homepage display news headlines:
+
+homepageView = new HomepageView(NewsListModel)
+homepageView._newsListModel.makeHeadlinesApiCall();
+homepageView.displayHeadlines(homepageView._newsListModel._articles);

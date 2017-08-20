@@ -14,3 +14,6 @@ exampleHeadlines =
 {articleTitle: "These videos show pure traffic chaos – or do they?", articleUrl: "cities/2017/aug/17/traffic-videos-chaos-removing-signals-shared-space"},
 {articleTitle: "Buses in Seoul install 'comfort women' statues to honour former sex slaves", articleUrl: "cities/2017/aug/16/buses-seoul-comfort-women-statues-korea-japan"},
 {articleTitle: "Thessaloniki in the spotlight: 100 years after a fire destroyed the city of refugees", articleUrl: "cities/2017/aug/14/thessaloniki-spotlight-salonika-greece-refugees-great-fire"}]
+
+singleExampleHeadline =
+[{articleTitle: "Las Ramblas", articleUrl: "world/2017"}]
