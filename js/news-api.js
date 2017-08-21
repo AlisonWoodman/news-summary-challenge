@@ -3,36 +3,42 @@
 (function(exports){
   function ApiCallsModel() {
     this._articleArray = []
+    this._singleArticle = []
   }
-  ApiCallsModel.prototype.loadwholeArticle = function(){
-    this.load('http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/world?show-editors-picks=true&show-fields=body', function(xhr) {
+  ApiCallsModel.prototype.loadSingleArticle = function(articleUrl){
+    var self = this;
+    var htmlToLoad = "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/" + articleUrl + "?show-fields=body"
+    this.load(htmlToLoad, function(xhr) {
       var json = JSON.parse(xhr.responseText);
-      // document.getElementById("app").innerHTML = json.response.content.webTitle + json.response.content.fields.body;
-      document.getElementById("app").innerHTML = xhr.responseText
-      // Headline
-      console.log(json.response.content.webTitle)
-      // // Article text
-      console.log(json.response.content.fields.body)
-    })
+      var htmlHeadline = json.response.content.webTitle;
+      var htmlContent = json.response.content.fields.body;
+      self._singleArticle.push({'headline' : htmlHeadline, "content" : htmlContent})
+      console.log('singlearticle: ' + self._singleArticle)
+      return self.getSingleArticle();
+    });
   };
 
   ApiCallsModel.prototype.getArticleArray = function() {
     return this._articleArray
   }
 
+  ApiCallsModel.prototype.getSingleArticle = function() {
+    return this._singleArticle
+  }
+
   ApiCallsModel.prototype.loadEditorsPicks = function(){
     var self = this;
     this.load('http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/world?show-editors-picks=true&show-fields=body',
     function(xhr) {
+      console.log (json)
       var json = JSON.parse(xhr.responseText);
-      document.getElementById("app").innerHTML = xhr.responseText
         json.response.editorsPicks.forEach(function(article){
         var articleTitle = article.webTitle;
         var articleUrl = article.id
         self._articleArray.push({'articleTitle': articleTitle, 'articleUrl' : articleUrl})
       });
+      return self._articleArray
     });
-    return self._articleArray
   };
 
   ApiCallsModel.prototype.load = function(url, callback) {

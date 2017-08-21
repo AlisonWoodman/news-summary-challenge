@@ -1,10 +1,10 @@
 (function(exports){
-  function NewsController(HomepageView, NewsListModel, ApiCallsModel) {
+  function NewsController(HomepageView, NewsListModel, ApiCallsModel, SingleArticleModel) {
     this._homepageView = new HomepageView(NewsListModel, ApiCallsModel)
+    this._singleArticleModel = new SingleArticleModel(ApiCallsModel)
   }
   NewsController.prototype.displayArticleList = function(articles) {
     var htmlToReturn = this._homepageView.displayHeadlines(articles)
-    console.log('htmltoreturn: ' + htmlToReturn)
     document.getElementById("app").innerHTML = htmlToReturn;
   };
 
@@ -20,17 +20,16 @@
     if (location.hash === "#articles") {
       self.displayArticleList();
     }
-    else this.showArticleContent(this.getArticleIdFromUrl(location));
+    else self.showArticleContent(self.getArticleUrlFromUrl(location));
   };
 
-  NewsController.prototype.getArticleIdFromUrl = function(location) {
-    return location.hash.split("/")[1];
+  NewsController.prototype.getArticleUrlFromUrl = function(location) {
+    return location.hash.split("#articles/")[1];
   };
 
-  NewsController.prototype.showArticleContent = function(articleId) {
-    var selectedArticle = this.noteList.getArticleFromId(articleId);
-    singleArticleView = new SingleArticleView(selectedArticle);
-    exports.document.getElementById("app").innerHTML = singleArticleView.display();
+  NewsController.prototype.showArticleContent = function(articleUrl) {
+    this._singleArticleModel.makeSingleArticleApiCall(articleUrl)
+    console.log('single article.get...: ' + this._singleArticleModel.getSingleArticle());
   };
 
   exports.NewsController = NewsController;

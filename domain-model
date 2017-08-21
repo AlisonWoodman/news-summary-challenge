@@ -26,7 +26,22 @@ Array element result from json.response.editorsPicks
 "apiUrl":"https://content.guardianapis.com/world/2017/aug/19/las-ramblas-cries-barcelona-recovers-defiance-attacks",
 "isHosted":false}
 
-How to make homepage display news headlines:
+How to make homepage display news headlines(no Api):
 
-newscontroller = new NewsController(HomepageView, NewsListModel, ApiCallsModel)
+newscontroller = new NewsController(HomepageView, NewsListModel, ApiCallsModel, SingleArticleModel)
 newscontroller.displayArticleList(exampleHeadlines)
+newscontroller._homepageView._newsListModel.addArticles(exampleHeadlines)
+newscontroller.makeUrlChangeToDisplayArticle();
+
+How to make homepage display news headlines(using Api):
+newscontroller = new NewsController(HomepageView, NewsListModel, ApiCallsModel)
+newscontroller._homepageView._newsListModel.makeHeadlinesApiCall();
+newscontroller.displayArticleList(newscontroller._homepageView._newsListModel._apiCallsModel._articleArray)
+
+To do:
+Make tests..!
+Update Api Call for individual articles
+Add Single Article View
+Add summary Api call
+Connect summary Api call to homepage
+Retrive article pictures for homepage
